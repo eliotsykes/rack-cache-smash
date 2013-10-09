@@ -15,7 +15,7 @@ and some weirdness I've seen in IE10 on Windows 8 with assets, 304 Not Modified 
 
 ## Installation
 
-Add the rack-uncache gem to the development group your application's Gemfile:
+Add the rack-uncache gem to the development group in your application's Gemfile:
 
     group :development do
         ...
