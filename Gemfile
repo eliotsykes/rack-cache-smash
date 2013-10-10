@@ -6,4 +6,5 @@ gemspec
 group :development do
   gem 'rack'
   gem 'rack-test'
+  gem 'timecop'
 end

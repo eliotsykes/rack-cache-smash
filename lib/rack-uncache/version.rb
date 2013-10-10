@@ -1,5 +1,5 @@
 module Rack
-  module Uncache
+  class Uncache
     VERSION = '0.0.1'
   end
 end

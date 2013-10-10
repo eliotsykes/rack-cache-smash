@@ -26,9 +26,11 @@ And then execute:
 
     $ bundle
 
-Add this line to config/application.rb:
+For Rails apps, add this line to config/application.rb:
 
-    config.middleware.swap(ActionDispatch::Static, Rack::Uncache)
+    config.middleware.use(Rack::Uncache)
+
+For Rack apps that don't use Rails, then place Rack::Uncache earlier in your middleware stack than the middleware(s) that generates response HTML.
 
 ## Contributing
 

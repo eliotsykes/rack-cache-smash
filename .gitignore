@@ -19,3 +19,4 @@ tmp
 *.iml
 .ruby-version
 vendor
+*.wip.txt
