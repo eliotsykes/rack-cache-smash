@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rack-uncache.gemspec
+# Specify your gem's dependencies in rack-cache-smash.gemspec
 gemspec
 
 group :development do
