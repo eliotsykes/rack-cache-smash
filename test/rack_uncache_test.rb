@@ -82,10 +82,24 @@ class Rack::UncacheTest < Test::Unit::TestCase
 
   def test_does_not_modify_non_html_responses
     @headers['Content-Type'] = 'text/plain'
-    flunk
+    @body = [
+        '<html><head>',
+        "<link href='/assets/typography.css' rel='stylesheet' type='text/css'></head><body>",
+        'Hello</body></html>',
+    ]
+    unmodified_body_str = @body.join('')
+
+    get '/'
+
+    assert_equal unmodified_body_str, last_response.body
+    assert_equal 'text/plain', last_response.headers['content-type']
   end
 
   def test_handles_content_type_with_charset_specified
+    flunk
+  end
+
+  def test_content_length_gets_updated
     flunk
   end
 
@@ -102,6 +116,7 @@ class Rack::UncacheTest < Test::Unit::TestCase
           result.gsub('[TIMESTAMP]', timestamp.to_s),
           last_response.body
       )
+      assert_equal 'text/html', last_response.headers['content-type']
     end
   end
 

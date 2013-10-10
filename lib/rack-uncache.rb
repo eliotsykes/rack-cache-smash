@@ -9,10 +9,13 @@ module Rack
 
     def call(env)
       response = @app.call(env)
-      # If response content type is text/html, then append timestamp to CSS and JS URLs
-      # as a query string parameter. ?cachebuster=[timestamp]
-      status = response.first
       headers = response[1]
+
+      if headers['Content-Type'] != 'text/html'
+        return response
+      end
+
+      status = response.first
       original_body_arr = response.last
       body_str = cache_bust_asset_paths_in_body(original_body_arr)
       return [status, headers, [body_str]]
