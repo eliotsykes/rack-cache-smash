@@ -28,7 +28,8 @@ module Rack
     end
 
     def cache_bust_asset_paths_in_body(original_body_arr)
-      body_str = original_body_arr.join('')
+      body_str = ''
+      original_body_arr.each { |part| body_str << part }
       timestamp = Time.now.utc.to_i
       body_str.gsub!(PATHS_TO_CACHE_SMASH_REGEXP) do |match|
         query_string_suffix = $~[:query_string] ? "&#{$~[:query_string]}" : ''
