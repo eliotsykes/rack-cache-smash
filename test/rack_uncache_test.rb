@@ -95,8 +95,16 @@ class Rack::UncacheTest < Test::Unit::TestCase
     assert_equal 'text/plain', last_response.headers['content-type']
   end
 
-  def test_handles_content_type_with_charset_specified
-    flunk
+  def test_handles_html_content_type_with_charset_specified
+    @headers['Content-Type'] = 'text/html; charset=utf-8'
+    assert_body_transform(
+        [
+            '<html><head>',
+            '<script src="/assets/application.js"></head><body>',
+            'Hello</body></html>',
+        ],
+        "<html><head><script src=\"/assets/application.js?cachebuster=[TIMESTAMP]\"></head><body>Hello</body></html>",
+    )
   end
 
   def test_content_length_gets_updated
@@ -116,7 +124,7 @@ class Rack::UncacheTest < Test::Unit::TestCase
           result.gsub('[TIMESTAMP]', timestamp.to_s),
           last_response.body
       )
-      assert_equal 'text/html', last_response.headers['content-type']
+      assert_match /(text\/html)|(text\/html; charset=utf-8)/, last_response.headers['content-type']
     end
   end
 
