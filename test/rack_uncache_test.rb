@@ -4,14 +4,9 @@ class Rack::UncacheTest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def setup
-    #ensure_correct_working_directory
     @body = nil
     @headers = {'Content-Type' => 'text/html'}
   end
-
-  #def teardown
-  #  revert_to_original_working_directory
-  #end
 
   def app
     status = 200
@@ -107,10 +102,6 @@ class Rack::UncacheTest < Test::Unit::TestCase
     )
   end
 
-  def test_content_length_gets_updated
-    flunk
-  end
-
   private
 
   def assert_body_transform(original, result)
@@ -127,31 +118,5 @@ class Rack::UncacheTest < Test::Unit::TestCase
       assert_match /(text\/html)|(text\/html; charset=utf-8)/, last_response.headers['content-type']
     end
   end
-
-  def assert_underlying_app_responded
-    assert_response_ok
-    assert_equal 'Up above the streets and houses', last_response.body
-  end
-
-  def assert_response_ok
-    assert_equal 200, last_response.status
-  end
-
-  def assert_not_found(msg=nil)
-    assert_equal 404, last_response.status, msg
-    assert_equal 'Not Found', last_response.body, msg
-  end
-
-  #def ensure_correct_working_directory
-  #  is_project_root_working_directory = File.exists?('rack-uncache.gemspec')
-  #  if is_project_root_working_directory
-  #    @original_dir = Dir.pwd
-  #    Dir.chdir 'test'
-  #  end
-  #end
-  #
-  #def revert_to_original_working_directory
-  #  Dir.chdir @original_dir if @original_dir
-  #end
 
 end
