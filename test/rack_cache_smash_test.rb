@@ -21,7 +21,7 @@ class Rack::CacheSmashTest < Test::Unit::TestCase
             '<script src="/assets/application.js"></head><body>',
             'Hello</body></html>',
         ],
-        "<html><head><script src=\"/assets/application.js?cachebuster=[TIMESTAMP]\"></head><body>Hello</body></html>",
+        "<html><head><script src=\"/assets/application.js?cachesmasher=[TIMESTAMP]\"></head><body>Hello</body></html>",
     )
   end
 
@@ -32,7 +32,7 @@ class Rack::CacheSmashTest < Test::Unit::TestCase
             "<link href='/assets/typography.css' rel='stylesheet' type='text/css'></head><body>",
             'Hello</body></html>',
         ],
-        "<html><head><link href='/assets/typography.css?cachebuster=[TIMESTAMP]' rel='stylesheet' type='text/css'></head><body>Hello</body></html>"
+        "<html><head><link href='/assets/typography.css?cachesmasher=[TIMESTAMP]' rel='stylesheet' type='text/css'></head><body>Hello</body></html>"
     )
   end
 
@@ -43,7 +43,7 @@ class Rack::CacheSmashTest < Test::Unit::TestCase
             '<script src="/assets/angular.js?body=1"></head><body>',
             'Hello</body></html>',
         ],
-        "<html><head><script src=\"/assets/angular.js?cachebuster=[TIMESTAMP]&body=1\"></head><body>Hello</body></html>",
+        "<html><head><script src=\"/assets/angular.js?cachesmasher=[TIMESTAMP]&body=1\"></head><body>Hello</body></html>",
     )
   end
 
@@ -54,7 +54,7 @@ class Rack::CacheSmashTest < Test::Unit::TestCase
             "<link href='/assets/layout.css?foo=bar&hello=world' rel='stylesheet' type='text/css'></head><body>",
             'Hello</body></html>',
         ],
-        "<html><head><link href='/assets/layout.css?cachebuster=[TIMESTAMP]&foo=bar&hello=world' rel='stylesheet' type='text/css'></head><body>Hello</body></html>"
+        "<html><head><link href='/assets/layout.css?cachesmasher=[TIMESTAMP]&foo=bar&hello=world' rel='stylesheet' type='text/css'></head><body>Hello</body></html>"
     )
   end
 
@@ -67,11 +67,11 @@ class Rack::CacheSmashTest < Test::Unit::TestCase
             "<link href='/assets/footer.css' rel='stylesheet' type='text/css'></head><body>",
             'Hello<script type="text/javascript" src="jquery.js"><script type="text/javascript" src="plugin.js?woo=hoo"></body></html>'
         ],
-        "<html><head><script src='https://somewhere.tld/some/path/to/analytics.js?cachebuster=[TIMESTAMP]'>" +
-        "<link href='/assets/layout.css?cachebuster=[TIMESTAMP]&foo=bar&hello=world' rel='stylesheet' type='text/css'>" +
-        "<link href='/assets/footer.css?cachebuster=[TIMESTAMP]' rel='stylesheet' type='text/css'></head><body>" +
-        "Hello<script type=\"text/javascript\" src=\"jquery.js?cachebuster=[TIMESTAMP]\">" +
-        "<script type=\"text/javascript\" src=\"plugin.js?cachebuster=[TIMESTAMP]&woo=hoo\"></body></html>"
+        "<html><head><script src='https://somewhere.tld/some/path/to/analytics.js?cachesmasher=[TIMESTAMP]'>" +
+        "<link href='/assets/layout.css?cachesmasher=[TIMESTAMP]&foo=bar&hello=world' rel='stylesheet' type='text/css'>" +
+        "<link href='/assets/footer.css?cachesmasher=[TIMESTAMP]' rel='stylesheet' type='text/css'></head><body>" +
+        "Hello<script type=\"text/javascript\" src=\"jquery.js?cachesmasher=[TIMESTAMP]\">" +
+        "<script type=\"text/javascript\" src=\"plugin.js?cachesmasher=[TIMESTAMP]&woo=hoo\"></body></html>"
     )
   end
 
@@ -98,7 +98,7 @@ class Rack::CacheSmashTest < Test::Unit::TestCase
             '<script src="/assets/application.js"></head><body>',
             'Hello</body></html>',
         ],
-        "<html><head><script src=\"/assets/application.js?cachebuster=[TIMESTAMP]\"></head><body>Hello</body></html>",
+        "<html><head><script src=\"/assets/application.js?cachesmasher=[TIMESTAMP]\"></head><body>Hello</body></html>",
     )
   end
 
