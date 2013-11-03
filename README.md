@@ -43,9 +43,9 @@ For Rack apps that don't use Rails, then place Rack::CacheSmash earlier in your 
 
 ## Releasing a new gem
 
-1. Increment version in lib/rack-cache-smash/version.rb in line with semantic versioning
+1. Update pre-release version to the release version in lib/rack-cache-smash/version.rb, e.g. '1.0.1.pre' becomes '1.0.1'
 2. Update CHANGELOG.md
 3. Tests pass? (`rake test`)
 4. Build the gem (`rake build`)
 5. Release on rubygems.org (`rake release`)
-
+6. Update version to the next pre-release version in lib/rack-cache-smash/version.rb, e.g. '1.0.1' becomes '1.0.2.pre'
